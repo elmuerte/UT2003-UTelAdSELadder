@@ -56,7 +56,7 @@ function bool Init()
   return true;
 }
 
-function OnLogin(UTelAdSEConnection connection)
+function OnLogin(UTelAdSEAccept connection)
 {
   local GameRules GR;
   if (LadderRules == none)
@@ -70,8 +70,9 @@ function OnLogin(UTelAdSEConnection connection)
   }
 }
 
-function bool ExecBuiltin(string command, array< string > args, out int hideprompt, UTelAdSEConnection connection)
+function bool ExecBuiltin(string command, array< string > args, out int hideprompt, UTelAdSEAccept connection)
 {
+  // FIXME:
   if (LadderRules == none)
   {
     connection.SendLine(msg_norules);
@@ -87,7 +88,7 @@ function bool ExecBuiltin(string command, array< string > args, out int hideprom
   }
 }
 
-function bool viewProfile(int index, UTelAdSEConnection connection)
+function bool viewProfile(int index, UTelAdSEAccept connection)
 {
   local ProfileConfigSet TempPCS;
   local PlayInfo TempPI;
@@ -172,7 +173,7 @@ function bool viewProfile(int index, UTelAdSEConnection connection)
   return false;
 }
 
-function execProfiles(array< string > args, UTelAdSEConnection connection)
+function execProfiles(array< string > args, UTelAdSEAccept connection)
 {
   local string cmd;
   local int i, j, index;
@@ -347,7 +348,7 @@ function execProfiles(array< string > args, UTelAdSEConnection connection)
   }
 }
 
-function execProfileEdit(array< string > args, UTelAdSEConnection connection)
+function execProfileEdit(array< string > args, UTelAdSEAccept connection)
 {
   local string cmd;
   local int index;
@@ -446,7 +447,7 @@ function bool TabComplete(array<string> commandline, out SortedStringArray optio
   return true;
 }
 
-function OnLogout(UTelAdSEConnection connection, out int canlogout, out array<string> messages)
+function OnLogout(UTelAdSEAccept connection, out int canlogout, out array<string> messages)
 {
   if (connection.Session.GetValue("profile_editing") != "")
   {
