@@ -72,13 +72,6 @@ function OnLogin(UTelAdSEAccept connection)
 
 function bool ExecBuiltin(string command, array< string > args, out int hideprompt, UTelAdSEAccept connection)
 {
-  // FIXME:
-  if (LadderRules == none)
-  {
-    connection.SendLine(msg_norules);
-    return true;
-  }
-
   switch (command)
   {
     case "profiles" : execProfiles(args, connection); return true;
@@ -178,6 +171,12 @@ function execProfiles(array< string > args, UTelAdSEAccept connection)
   local string cmd;
   local int i, j, index;
   local bool bDelay;
+
+  if (LadderRules == none)
+  {
+    connection.SendLine(msg_norules);
+    return;
+  }
 
   if (CanPerform(connection.Spectator, "Tg"))
 	{
@@ -352,6 +351,12 @@ function execProfileEdit(array< string > args, UTelAdSEAccept connection)
 {
   local string cmd;
   local int index;
+  if (LadderRules == none)
+  {
+    connection.SendLine(msg_norules);
+    return;
+  }
+
   if (CanPerform(connection.Spectator, "Tg") && CanPerform(connection.Spectator, "Le"))
 	{
     if (connection.Session.GetValue("profile_editing") == "")
