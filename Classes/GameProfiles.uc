@@ -81,8 +81,9 @@ function bool ExecBuiltin(string command, array< string > args, out int hideprom
   switch (command)
   {
     case "profiles" : execProfiles(args, connection); return true;
-    case "pe" : execProfileEdit(args, connection); return true;
-    case "pm" : execProfileEdit(args, connection); return true;
+    //case "pe" : execProfileEdit(args, connection); return true;
+    //case "pm" : execProfileEdit(args, connection); return true;
+    //case "pme" : execProfileEdit(args, connection); return true;
   }
 }
 
@@ -289,6 +290,9 @@ function execProfiles(array< string > args, UTelAdSEConnection connection)
     }
     else if (cmd == "edit")
     {
+      connection.SendLine("This feature is not finished yet");
+      return;
+
       if (CanPerform(connection.Spectator, "Le"))
     	{
         if (connection.Session.GetValue("profile_editing") != "")
