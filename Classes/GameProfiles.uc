@@ -368,8 +368,11 @@ function execProfileEdit(array< string > args, UTelAdSEConnection connection)
       else if (cmd == "remove")
       {
       }
+      else if (cmd == "move")
+      {
+      }
       else {
-        connection.SendLine(msg_usage@PREFIX_BUILTIN$"pe <maps> [add|remove|list] maps ...");
+        connection.SendLine(msg_usage@PREFIX_BUILTIN$"pe <maps> <list|add maps ...|remove maps ...|move from to> ");
       }
     }
     else if (cmd == "mutators")
@@ -385,7 +388,7 @@ function execProfileEdit(array< string > args, UTelAdSEConnection connection)
       {
       }
       else {
-        connection.SendLine(msg_usage@PREFIX_BUILTIN$"pe <mutators> [add|remove|list] mutators ...");
+        connection.SendLine(msg_usage@PREFIX_BUILTIN$"pe <mutators> <list|add maps ...|remove maps ...>");
       }
     }
     else if (cmd == "set")
@@ -403,7 +406,7 @@ function execProfileEdit(array< string > args, UTelAdSEConnection connection)
       connection.Session.removeValue("profile_editing");
     }
     else {
-      connection.SendLine(msg_usage@PREFIX_BUILTIN$"pe <maps> <list|add|remove> maps ... | <mutators> <list|add|remove> maps ... | <set> setting value | <save> | <cancel>");
+      connection.SendLine(msg_usage@PREFIX_BUILTIN$"pe <maps> <list|add maps ...|remove maps ...|move from to> | <mutators> <list|add maps ...|remove maps ...> | <set> setting value | <save> | <cancel>");
     }
   }
   else {
