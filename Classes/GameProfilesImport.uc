@@ -7,6 +7,9 @@
 
 class GameProfilesImport extends TCPLink;
 
+// Place holder ??
+
+/*
 var private string sHostname;
 var private int iPort;
 var private string sRequest;
@@ -22,3 +25,4 @@ function Import()
 function ParseDownloadUrl()
 {
 }
+*/

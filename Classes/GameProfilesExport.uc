@@ -7,6 +7,10 @@
 
 class GameProfilesExport extends Info;
 
+// place holder ??
+
+/*
 var string filename;
 var string profilename;
 var UTelAdSEConnection connection;
+*/
